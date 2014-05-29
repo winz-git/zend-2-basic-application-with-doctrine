@@ -1,0 +1,19 @@
+        <form name="theForm" id="theForm" action="<?php echo $this->escapeHtml($this->action);?>" method="post">
+            <table class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Response</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?php echo $this->escapeHtml($this->id);?></td>
+                        <td><input style="width: 350px;" type="text" name="resource" id="resource" value="<?php echo $this->escapeHtml($this->description);?>"/></td>
+                        <td><input type="checkbox" name="id_deleted" id="id_deleted" <?php echo (($this->deleted == '1') ? "checked": "");?>/></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="hidden" name="id" value="<?php echo $this->escapeHtml($this->id);?>"/>
+        </form>

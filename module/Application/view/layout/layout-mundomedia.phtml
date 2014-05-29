@@ -1,0 +1,315 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <?php echo $this->headTitle('mProtect.com '. $this->translate('Administration'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <!-- Le styles -->
+    <?php echo $this->headLink()
+        ->appendStylesheet($this->basePath('/module/css/jquery-ui-1.8.16.custom.css'))
+        ->appendStylesheet($this->basePath('/assets/css/bootstrap.min.css'))
+        ->appendStylesheet($this->basePath('/assets/css/font-awesome.min.css'))
+        ->appendStylesheet($this->basePath('/assets/css/font-awesome-ie7.min.css'), 'screen', 'IE 7')
+        ->appendStylesheet($this->basePath('/assets/css/ace-fonts.css'))
+        ->appendStylesheet($this->basePath('/assets/css/ace.min.css'))
+        ->appendStylesheet($this->basePath('/assets/css/ace-rtl.min.css'))
+        ->appendStylesheet($this->basePath('/assets/css/ace-skins.min.css'))
+        ->appendStylesheet($this->basePath('/assets/css/ace-ie.min.css'), 'screen', 'lte IE 8')
+    ;?>
+    <!-- Scripts -->
+    <?php echo $this->headScript()
+        ->prependFile('/module/js/jquery.min.js')
+        ->appendFile($this->basePath('/assets/js/ace-extra.min.js'))
+        ->appendFile($this->basePath('/assets/js/html5shiv.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ->appendFile($this->basePath('/assets/js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+    ; ?>
+
+</head>
+	<body>
+		<?php if(!empty($this->userInfo)) : ?>
+		<div class="navbar navbar-default" id="navbar">
+			<script type="text/javascript">
+				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="navbar-container" id="navbar-container">
+				<div class="navbar-header pull-left">
+					<a href="<?php echo $this->basePath('/admin');?>" class="navbar-brand">
+						<small>
+							<img src="<?php echo $this->basePath('/module/images/mprotect_logo.png');?>" border="0" style="border:none;height:22px;" />
+							mProtect Admin
+						</small>
+					</a>
+				</div><!-- /.navbar-header -->
+
+				<div class="navbar-header pull-right" role="navigation">
+					<ul class="nav ace-nav">
+						<!---<li class="grey">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="icon-tasks"></i>
+								<span class="badge badge-grey">4</span>
+							</a>
+
+							<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+								<li class="dropdown-header">
+									<i class="icon-ok"></i>
+									4 Tasks to complete
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">Task Name</span>
+											<span class="pull-right">65%</span>
+										</div>
+
+										<div class="progress progress-mini ">
+											<div style="width:65%" class="progress-bar "></div>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										See tasks with details
+										<i class="icon-arrow-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li>--->
+
+						<!---<li class="purple">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="icon-bell-alt icon-animated-bell"></i>
+								<span class="badge badge-important">8</span>
+							</a>
+
+							<ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+								<li class="dropdown-header">
+									<i class="icon-warning-sign"></i>
+									8 Notifications
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-pink icon-comment"></i>
+												New Comments
+											</span>
+											<span class="pull-right badge badge-info">+12</span>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										See all notifications
+										<i class="icon-arrow-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li>--->
+
+						<!---<li class="green">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="icon-envelope icon-animated-vertical"></i>
+								<span class="badge badge-success">5</span>
+							</a>
+
+							<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+								<li class="dropdown-header">
+									<i class="icon-envelope-alt"></i>
+									5 Messages
+								</li>
+
+								<li>
+									<a href="#">
+										<img src="<?php echo $this->basePath('/assets/avatars/avatar.png');?>" class="msg-photo" alt="Alex's Avatar" />
+										<span class="msg-body">
+											<span class="msg-title">
+												<span class="blue">Alex:</span>
+												Message Summary
+											</span>
+
+											<span class="msg-time">
+												<i class="icon-time"></i>
+												<span>Message Time</span>
+											</span>
+										</span>
+									</a>
+								</li>
+
+								<li>
+									<a href="inbox.html">
+										See all messages
+										<i class="icon-arrow-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li>--->
+
+						<li class="light-blue">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+								<img class="nav-user-photo" src="<?php echo $this->basePath('/assets/avatars/avatar2.png');?>" alt="<?php echo $this->userInfo['login_name'] ?>'s Photo" />
+								<span class="user-info">
+									<small>Welcome,</small>
+									<?php echo $this->userInfo['login_name'] ?>
+								</span>
+
+								<i class="icon-caret-down"></i>
+							</a>
+
+							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+								<!---
+								<li>
+									<a href="#">
+										<i class="icon-cog"></i>
+										Settings
+									</a>
+								</li>
+								--->
+
+								<li class="divider"></li>
+
+								<li>
+									<a href="<?php echo $this->basePath('/admin/auth/logout');?>">
+										<i class="icon-off"></i>
+										Logout
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul><!-- /.ace-nav -->
+				</div><!-- /.navbar-header -->
+			</div><!-- /.container -->
+		</div>
+
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="main-container-inner">
+				<a class="menu-toggler" id="menu-toggler" href="#">
+					<span class="menu-text"></span>
+				</a>
+
+				<div class="sidebar" id="sidebar">
+					<script type="text/javascript">
+						try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+					</script>
+
+					<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+						<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+							<a class="btn btn-success" href="<?php echo $this->basePath('/admin/subscription');?>">
+								<i class="icon-credit-card"></i>
+							</a>
+
+							<a class="btn btn-info" href="<?php echo $this->basePath('/admin/reports');?>">
+								<i class="icon-bar-chart"></i>
+							</a>
+
+							<a class="btn btn-warning" href="<?php echo $this->basePath('/admin/adminusers');?>">
+								<i class="icon-group"></i>
+							</a>
+
+							<a class="btn btn-danger" href="<?php echo $this->basePath('/admin/utilities');?>">
+								<i class="icon-cogs"></i>
+							</a>
+						</div>
+
+						<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+							<span class="btn btn-success"></span>
+
+							<span class="btn btn-info"></span>
+
+							<span class="btn btn-warning"></span>
+
+							<span class="btn btn-danger"></span>
+						</div>
+					</div><!-- #sidebar-shortcuts -->
+
+					<?php 
+						echo $this->navigation((isset($this->custom_nav) ? $this->custom_nav: 'navigation'))
+							->menu()
+							->setPartial(array('partial/acesidenav','admin'))
+							->render(); 
+					?>
+
+					<div class="sidebar-collapse" id="sidebar-collapse">
+						<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+					</div>
+
+					<script type="text/javascript">
+						try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+					</script>
+				</div>
+
+				<div class="main-content">
+        <?php echo $this->navigation((isset($this->custom_nav) ? $this->custom_nav: 'navigation'))
+                    ->breadcrumbs()
+                    ->setPartial(array('partial/acebreadcrumb','admin'))
+                    ->render();
+        ?>
+					<div class="page-content">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								
+
+        <?php echo $this->content; ?>
+        <footer>
+            <div class="copyright_container"><div class="copyright_text"></div></div>
+        </footer>
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
+
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='<?php echo $this->basePath('/assets/js/jquery-2.0.3.min.js');?>'>"+"<"+"/script>");
+		</script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+        <script type="text/javascript">
+         window.jQuery || document.write("<script src='<?php echo $this->basePath('/assets/js/jquery-1.10.2.min.js');?>'>"+"<"+"/script>");
+        </script>
+        <![endif]-->
+
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='<?php echo $this->basePath('/assets/js/jquery.mobile.custom.min.js');?>'>"+"<"+"/script>");
+		</script>
+		<script src="<?php echo $this->basePath('/assets/js/bootstrap.min.js');?>"></script>
+		<script src="<?php echo $this->basePath('/assets/js/typeahead-bs2.min.js');?>"></script>
+
+		<!-- page specific plugin scripts -->
+
+		<script src="<?php echo $this->basePath('/assets/js/jquery.dataTables.min.js');?>"></script>
+		<script src="<?php echo $this->basePath('/assets/js/jquery.dataTables.bootstrap.js');?>"></script>
+
+		<!-- ace scripts -->
+
+		<script src="<?php echo $this->basePath('/assets/js/ace-elements.min.js');?>"></script>
+		<script src="<?php echo $this->basePath('/assets/js/ace.min.js');?>"></script>
+
+		<!-- inline scripts related to this page -->
+		<?php echo $this->inlineScript() ?>
+		<?php endif ?>
+	</body>
+</html>

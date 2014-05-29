@@ -1,0 +1,56 @@
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th colspan="5"><a href="./track/add" class="btn btn-primary">Add</a></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Id</td>
+                                <td>Title</td>
+                                <td>Description</td>
+                                <td>Category</td>
+                                <td>Year</td>
+                                <td>Created Date</td>
+                                <td>Update Date</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <!-- loop -->
+                            <?php if(isset($result)):?>
+                                <?php foreach($result as $product): ?>
+                                    <tr>
+                                        <td><?php echo $product['id'];?></td>
+                                        <td><?php echo $product['title'];?></td>
+                                        <td><?php echo $product['description'];?></td>
+                                        <td><?php echo $product['category_name'];?></td>
+                                        <td><?php echo $product['year'];?></td>
+                                        <td><?php echo $product['created_date'];?></td>
+                                        <td><?php echo $product['updated_date']; ?></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button id="id-btn-edit" type="button" class="btn btn-xs btn-info">
+                                                    <i class="glyphicon glyphicon-edit"></i>
+                                                </button>
+                                                <button id="id-btn-delete" type="button" class="btn btn-xs btn-danger">
+                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif;?>
+                            <!--/loop -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
