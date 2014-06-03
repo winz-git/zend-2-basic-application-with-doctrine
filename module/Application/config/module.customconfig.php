@@ -7,38 +7,10 @@
  */
 
 return array(
-   'subscription_status_list' => array(
-       'WAITING',
-       'EXECUTING',
-       'SUCCESS',
-       'FAILED',
-       'CANCELLED'
-   ),
-   'customer_type_options' => array(
-        'FREE',
-        'PURCHASED'
-   ),
-    'customer_status_list'=>array(
-        'ACTIVE',
-        'INACTIVE',
-        'ARCHIVE'
-    ),
-    'transaction_status_list'=>array(
-        'FAIL',
-        'PENDING',
-        'SUCCESS',
-        'REFUND'
-    ),
+
     //download path
     'download_path' => realpath(__DIR__ . '/../../../downloads/'),
-   // limelight info
-    'limelight' => array(
-        'url'=>'https://www.androidspace.info/admin/',
-        'membership_page'=>'membership.php',
-        'transaction_page'=>'trans.php',
-        'username'=>'api.mprotect.com',
-        'password'=>'ycv7Dc9Q634VvA'
-    ),
+
    //
    'curl_timeout' => 30,
    //

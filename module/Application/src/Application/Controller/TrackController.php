@@ -11,12 +11,9 @@ namespace Application\Controller;
 
 use Application\Controller\BaseController;
 use Zend\View\Model\ViewModel;
-use Zend\Db\Sql\Sql,
-    Zend\Db\ResultSet\ResultSet;
 
-use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator;
-use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
-use Zend\Paginator\Paginator;
+
+use Application\Model\Navigation;
 
 class TrackController extends BaseController{
 

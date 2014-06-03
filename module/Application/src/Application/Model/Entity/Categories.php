@@ -17,7 +17,7 @@ use Doctrine\ORM\EntityRepository;
  * Class Categories
  * @package Application\Model\Entity
  *
- * @ORM\Table(name="categories")
+ * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="Application\Model\Entity\Repository\Categories")
  */
 class Categories {
